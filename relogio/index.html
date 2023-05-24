@@ -1,0 +1,82 @@
+<div id='display'>
+  <div class='item' id='display-hora'></div>
+  |
+  <div class='item' id='display-minuto'></div>
+  |
+  <div class='item' id='display-segundo'></div>
+</div>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  height: -webkit-fill-available;
+}
+
+body {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #202020;
+  color: white;
+  font-weight: 300;
+  background-image: url(back.jpg);
+  background-size: cover;
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+}
+
+body:last-child {
+  font-size: 1rem;
+}
+
+#display {
+  display: flex;
+} 
+
+.item {
+  padding-inline: 0.25rem;
+  width: 70px;
+  text-align: center;
+  mix-blend-mode: lighten;
+}
+
+</style>
+<script>
+    function showTime(){
+        var date = new Date();
+        var h = date.getHours(); // 0 - 23
+        var m = date.getMinutes(); // 0 - 59
+        var s = date.getSeconds(); // 0 - 59
+        
+        h = (h < 10) ? "0" + h : h;
+        m = (m < 10) ? "0" + m : m;
+        s = (s < 10) ? "0" + s : s;
+        
+        
+        document.getElementById("display-hora").innerText = h;
+        document.getElementById("display-hora").textContent = h;
+
+        document.getElementById("display-minuto").innerText = m;
+        document.getElementById("display-minuto").textContent = m;
+
+        document.getElementById("display-segundo").innerText = s;
+        document.getElementById("display-segundo").textContent = s;
+        
+        setTimeout(showTime, 1000);
+        
+    }
+    let dias = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado']
+    showTime();
+    let date = new Date()
+    body = document.getElementsByTagName('body')[0]
+    body.appendChild(document.createTextNode(dias[date.getDay()]))
+</script>
